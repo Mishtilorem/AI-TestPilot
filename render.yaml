@@ -1,0 +1,45 @@
+# Render Blueprint — backend on the native Python runtime (no Docker).
+# In Render: New + > Blueprint, point at this repo. Set the "sync: false" vars
+# in the dashboard (they are secrets).
+#
+# Note: the native runtime has no Chrome, so live Selenium execution is a
+# local-only feature. Everything else (auth, CRUD, AI generation, AI failure
+# analysis, reporting) runs fully in the cloud.
+services:
+  - type: web
+    name: ai-testpilot-api
+    runtime: python
+    rootDir: backend
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.4"
+      - key: DATABASE_URL
+        sync: false          # Neon Postgres connection string
+      - key: SECRET_KEY
+        generateValue: true  # Render generates a strong secret
+      - key: ALGORITHM
+        value: HS256
+      - key: ACCESS_TOKEN_EXPIRE_MINUTES
+        value: "30"
+      - key: REFRESH_TOKEN_EXPIRE_DAYS
+        value: "7"
+      - key: AI_PROVIDER
+        value: groq
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GROQ_MODEL
+        value: llama-3.1-8b-instant
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+      - key: APP_ENV
+        value: production
+      - key: CORS_ORIGINS
+        sync: false          # your Vercel URL, e.g. https://ai-testpilot.vercel.app

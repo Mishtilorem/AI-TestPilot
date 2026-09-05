@@ -1,0 +1,9 @@
+venv/
+__pycache__/
+*.pyc
+.env
+*.db
+.pytest_cache/
+*.png
+app/selenium/reports/*.html
+.DS_Store
