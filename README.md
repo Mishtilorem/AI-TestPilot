@@ -2,7 +2,7 @@
 
 **An AI-powered test automation platform.** Describe a feature in plain English — AI TestPilot generates the test cases, writes the Selenium automation, runs it in a real browser, and explains failures with AI root-cause analysis.
 
-🔗 **Live:** [ai-testpilot.vercel.app](https://ai-testpilot.vercel.app) · 🎥 **Demo video:** [watch here](https://drive.google.com/file/d/1gADIRv-8cJAuG-1sPC_0_bqwqTzMSreQ/view?usp=sharing) · 📦 **Source:** [github.com/anmol-284/ai-testpilot](https://github.com/anmol-284/ai-testpilot)
+🔗 **Live:** [ai-testpilot.vercel.app](https://ai-testpilot.vercel.app) · 🎥 **Demo video:** [watch here](https://drive.google.com/file/d/1gADIRv-8cJAuG-1sPC_0_bqwqTzMSreQ/view?usp=sharing)·
 
 ---
 
